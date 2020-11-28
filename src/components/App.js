@@ -5,15 +5,17 @@ import SearchBar from './SearchBar';
 import ImageList from './ImageList';
 
 class App extends React.Component {
-    handleOnSearchSubmit(term){
+    async handleOnSearchSubmit(term){
         //console.log(term)
-        axios.get('https://api.unsplash.com/search/photos', {
+        const response = await axios.get('https://api.unsplash.com/search/photos', {
             params: { query: term },
             headers: {
               Authorization:
                 'Client-ID b4PL6HRRjSKP8br3QUIkaaGiDO7AN5yJ_UkMvrO_918',
             },
           });
+
+          console.log(response.data.results)
     }
 
     render() {
